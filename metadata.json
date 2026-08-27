@@ -1,0 +1,6 @@
+{
+  "name": "Iron District Athletics",
+  "description": "A premium strength, fitness and performance club website.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

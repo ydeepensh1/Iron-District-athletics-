@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-black: #080808;
+  --color-brand-surface: #151515;
+  --color-brand-surface-hover: #1f1f1f;
+  --color-brand-text: #F5F3EE;
+  --color-brand-muted: #9B9B9B;
+  --color-brand-accent: #FF5A1F;
+  --color-brand-accent-hover: #e04a14;
+  
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Manrope', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-brand-black text-brand-text font-body antialiased selection:bg-brand-accent selection:text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-wide uppercase;
+  }
+}
+
+@media print {
+  @page {
+    margin: 0;
+    size: A4;
+  }
+
+  html, body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: #080808 !important;
+  }
+
+  /* Prevent text and cards from being cut in half */
+  h1, h2, h3, h4, h5, h6, p, li {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    display: inline-block;
+  }
+  
+  img, .grid > div {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Fix for plan cards */
+  #membership .grid > div {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Ensure Hero fits exactly on first page */
+  section.hero-print-fix {
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+    page-break-after: always;
+  }
+  
+  /* Remove trailing blank space or overlapping sections */
+  section {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+  
+  /* Condense huge paddings in print to save space and merge pages */
+  .py-24, .py-32, .pt-24, .pb-12, .pt-32, .pb-24, .mt-24, .mb-24, .mt-16, .mb-16 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  header {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+}
